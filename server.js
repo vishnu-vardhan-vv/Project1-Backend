@@ -7,7 +7,8 @@ const cors=require('cors');
 
 dotenv.config();
 const app=express();
-app.use(cors({origin:'http://localhost:3000',credentials:true}));
+// app.use(cors({origin:'https://localhost:3000',credentials:true}));
+app.use(cors({origin:'https://project1-frontend-beta.vercel.app',credentials:true}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
