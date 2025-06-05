@@ -105,6 +105,7 @@ exports.resetPassword=async(req,res)=>{
         user.password=await bcrypt.hash(password,12);
         user.resetPasswordToken=undefined;
         user.resetPasswordExpires=undefined;
+        user.isVerified=true;
         await user.save();
         res.send('Password has been reset successfully');
     }
