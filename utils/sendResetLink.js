@@ -12,9 +12,7 @@ module.exports = async function(to, token) {
     await transporter.sendMail({
         to,
         subject: 'Reset Link',
-        // html: (`<h1>Email Verification</h1>
-        //     <p>Click <a href="http://localhost:3000/reset-password/${token}">here</a> to verify.</p>`)
         html: (`<h1>Email Verification</h1>
-            <p>Click <a href="https://project1-frontend-beta.vercel.app//reset-password/${token}">here</a> to verify.</p>`)
+            <p>Click <a href="${process.env.FRONTEND_URL}/reset-password/${token}">here</a> to verify.</p>`)
     });
 };

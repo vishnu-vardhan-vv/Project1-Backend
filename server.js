@@ -3,12 +3,14 @@ const mongoose=require('mongoose');
 const dotenv=require('dotenv');
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/auth');
+const contactRoutes=require('./routes/contact');
+const adminRoutes=require('./routes/admin');
 const cors=require('cors');
 
 dotenv.config();
 const app=express();
-// app.use(cors({origin:'https://localhost:3000',credentials:true}));
-app.use(cors({origin:'https://project1-frontend-beta.vercel.app',credentials:true}));
+app.use(cors({origin:`${process.env.FRONTEND_URL}`,credentials:true}));
+// app.use(cors({origin:'https://project1-frontend-beta.vercel.app',credentials:true}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
@@ -26,6 +28,9 @@ app.use(cookieParser());
 })();
 
 app.use('/api/auth',authRoutes);
+app.use('/api',contactRoutes);
+app.use('/api/admin',adminRoutes);
+
 
 const PORT=process.env.PORT||5000;
 app.listen(PORT,()=>{
