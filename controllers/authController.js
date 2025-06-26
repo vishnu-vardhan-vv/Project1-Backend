@@ -49,6 +49,8 @@ exports.verifyEmail=async (req,res)=>{
     }
 }
 
+
+
 exports.login=async (req,res)=>{
     const {email,password}=req.body;
     try{
@@ -63,8 +65,9 @@ exports.login=async (req,res)=>{
         if(!matched){
             return res.status(400).send('Invalid credentials');
         }
-        const token=jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET,{expiresIn:'1h'});
-        res.cookie('token',token,{httpOnly:true,secure:true}).send('Logged in');
+        const token=jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET,{expiresIn:'1d'});
+        res.cookie('token',token,{httpOnly:true,secure:true,maxAge:3600000}).send('Logged in');
+
     }
     catch(error){
         res.status(500).send('Server error');
