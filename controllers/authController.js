@@ -49,7 +49,12 @@ exports.verifyEmail=async (req,res)=>{
     }
 }
 
-
+// res.cookie('token', token, {
+//   httpOnly: true,
+//   secure: process.env.NODE_ENV === 'production',       // ✅ required for HTTPS
+//   sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax', // ✅ required for cross-site cookies
+//   maxAge: 3600000
+// });
 
 exports.login=async (req,res)=>{
     const {email,password}=req.body;
@@ -66,7 +71,7 @@ exports.login=async (req,res)=>{
             return res.status(400).send('Invalid credentials');
         }
         const token=jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET,{expiresIn:'1d'});
-        res.cookie('token',token,{httpOnly:true,secure:true,maxAge:3600000}).send('Logged in successfully');
+        res.cookie('token',token,{httpOnly:true,secure:true,sameSite:'None',maxAge:3600000}).send('Logged in successfully');
 
     }
     catch(error){
