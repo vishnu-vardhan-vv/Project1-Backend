@@ -66,7 +66,7 @@ exports.login=async (req,res)=>{
             return res.status(400).send('Invalid credentials');
         }
         const token=jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET,{expiresIn:'1d'});
-        res.cookie('token',token,{httpOnly:true,secure:true,maxAge:3600000}).send('Logged in');
+        res.cookie('token',token,{httpOnly:true,secure:true,maxAge:3600000}).send('Logged in successfully');
 
     }
     catch(error){
@@ -87,7 +87,7 @@ exports.forgotPassword=async(req,res)=>{
         user.resetPasswordExpires=Date.now()+3600000;
         await user.save();
         await sendResetLink(email,token);
-        res.send('Password reset email sent');
+        res.send('Password reset link sent tom email');
     }
     catch(error){
         res.status(500).send('Server error');

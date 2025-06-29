@@ -10,4 +10,3 @@ router.get('/:id',blogController.blogDetails);
 module.exports= router;
 
 
-
