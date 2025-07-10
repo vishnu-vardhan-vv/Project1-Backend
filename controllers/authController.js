@@ -51,8 +51,8 @@ exports.verifyEmail=async (req,res)=>{
 
 // res.cookie('token', token, {
 //   httpOnly: true,
-//   secure: process.env.NODE_ENV === 'production',       // ✅ required for HTTPS
-//   sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax', // ✅ required for cross-site cookies
+//   secure: process.env.NODE_ENV === 'production',       
+//   sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
 //   maxAge: 3600000
 // });
 

@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const contactRoutes=require('./routes/contact');
 const adminRoutes=require('./routes/admin');
 const blogRoutes=require('./routes/blog');
+const propertyRoutes=require('./routes/property');
 const cors=require('cors');
 
 dotenv.config();
@@ -32,6 +33,7 @@ app.use('/api/auth',authRoutes);
 app.use('/api',contactRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/blogs',blogRoutes);
+app.use('/api/properties',propertyRoutes);
 
 
 const PORT=process.env.PORT||5000;

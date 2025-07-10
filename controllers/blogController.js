@@ -47,35 +47,3 @@ exports.blogDetails=async(req,res)=>{
     }
 
 }
-
-
-// import express from 'express';
-// import Blog from '../models/Blog.js';
-// import { protect, contentCreatorOnly } from '../middleware/authMiddleware.js';
-
-// const router = express.Router();
-
-// router.get('/', async (req, res) => {
-//   const { page = 1, sort = 'latest' } = req.query;
-//   const limit = 6;
-//   const skip = (page - 1) * limit;
-
-//   const sortBy = sort === 'trending' ? { views: -1, likes: -1 } : { createdAt: -1 };
-//   const blogs = await Blog.find().sort(sortBy).skip(skip).limit(limit).populate('author', 'name');
-//   res.json(blogs);
-// });
-
-// router.get('/:id', async (req, res) => {
-//   const blog = await Blog.findById(req.params.id).populate('author', 'name');
-//   blog.views++;
-//   await blog.save();
-//   res.json(blog);
-// });
-
-// router.post('/', protect, contentCreatorOnly, async (req, res) => {
-//   const { title, content, tags, category } = req.body;
-//   const blog = await Blog.create({ title, content, tags, category, author: req.user.id });
-//   res.status(201).json(blog);
-// });
-
-// export default router;
